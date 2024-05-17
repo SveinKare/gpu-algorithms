@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\ctuff
+CMAKE_SOURCE_DIR = C:\Users\svein\gpu-algorithms
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\ctuff\build
+CMAKE_BINARY_DIR = C:\Users\svein\gpu-algorithms\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\ctuff\build\CMakeFiles C:\ctuff\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\svein\gpu-algorithms\build\CMakeFiles C:\Users\svein\gpu-algorithms\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\ctuff\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\svein\gpu-algorithms\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ctuff
+# Target rules for targets named gpu-algorithms
 
 # Build rule for target.
-ctuff: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 ctuff
-.PHONY : ctuff
+gpu-algorithms: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 gpu-algorithms
+.PHONY : gpu-algorithms
 
 # fast build rule for target.
-ctuff/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ctuff.dir\build.make CMakeFiles/ctuff.dir/build
-.PHONY : ctuff/fast
+gpu-algorithms/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gpu-algorithms.dir\build.make CMakeFiles/gpu-algorithms.dir/build
+.PHONY : gpu-algorithms/fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ctuff.dir\build.make CMakeFiles/ctuff.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gpu-algorithms.dir\build.make CMakeFiles/gpu-algorithms.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -141,7 +141,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ctuff.dir\build.make CMakeFiles/ctuff.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gpu-algorithms.dir\build.make CMakeFiles/gpu-algorithms.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -149,32 +149,8 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ctuff.dir\build.make CMakeFiles/ctuff.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\gpu-algorithms.dir\build.make CMakeFiles/gpu-algorithms.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-src/add.obj: src/add.cpp.obj
-.PHONY : src/add.obj
-
-# target to build an object file
-src/add.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ctuff.dir\build.make CMakeFiles/ctuff.dir/src/add.cpp.obj
-.PHONY : src/add.cpp.obj
-
-src/add.i: src/add.cpp.i
-.PHONY : src/add.i
-
-# target to preprocess a source file
-src/add.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ctuff.dir\build.make CMakeFiles/ctuff.dir/src/add.cpp.i
-.PHONY : src/add.cpp.i
-
-src/add.s: src/add.cpp.s
-.PHONY : src/add.s
-
-# target to generate assembly for a file
-src/add.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ctuff.dir\build.make CMakeFiles/ctuff.dir/src/add.cpp.s
-.PHONY : src/add.cpp.s
 
 # Help Target
 help:
@@ -184,13 +160,10 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... ctuff
+	@echo ... gpu-algorithms
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... src/add.obj
-	@echo ... src/add.i
-	@echo ... src/add.s
 .PHONY : help
 
 

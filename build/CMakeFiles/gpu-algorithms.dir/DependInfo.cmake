@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/ctuff/main.cpp" "CMakeFiles/ctuff.dir/main.cpp.obj" "gcc" "CMakeFiles/ctuff.dir/main.cpp.obj.d"
-  "C:/ctuff/src/add.cpp" "CMakeFiles/ctuff.dir/src/add.cpp.obj" "gcc" "CMakeFiles/ctuff.dir/src/add.cpp.obj.d"
+  "C:/Users/svein/gpu-algorithms/main.cpp" "CMakeFiles/gpu-algorithms.dir/main.cpp.obj" "gcc" "CMakeFiles/gpu-algorithms.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
