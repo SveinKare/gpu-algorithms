@@ -1,3 +1,0 @@
-C:/Users/svein/gpu-algorithms/build/CMakeFiles/gpu-algorithms.dir
-C:/Users/svein/gpu-algorithms/build/CMakeFiles/edit_cache.dir
-C:/Users/svein/gpu-algorithms/build/CMakeFiles/rebuild_cache.dir
