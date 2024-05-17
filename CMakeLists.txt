@@ -1,32 +1,38 @@
 cmake_minimum_required(VERSION 3.29)
 project(gpu-algorithms)
 
+include(FetchContent)
+
 set(CMAKE_C_COMPILER "gcc")
 set(CMAKE_CXX_COMPILER "g++")
 set(CMAKE_CXX_STANDARD 20)
 
-set(BOOST_ROOT "C:/Users/svein/boost_1_85_0")
-set(BOOST_INCLUDE_DIRS "${BOOST_ROOT}")
-set(BOOST_LIBRARY_DIRS "${BOOST_ROOT}/stage/lib")
+if (DEFINED ENV{BOOST_ROOT_DIR})
+  set(BOOST_ROOT $ENV{BOOST_ROOT_DIR})
+  set(BOOST_INCLUDE_DIRS "${BOOST_ROOT}")
+  set(BOOST_LIBRARY_DIRS "${BOOST_ROOT}/stage/lib")
+else()
+  message(FATAL_ERROR "Please set the BOOST_ROOT_DIR environment variable to the path of your Boost installation.")
+endif()
 
-set(CUDA_ROOT "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.4")
-set(CUDA_INCLUDE_DIRS "${CUDA_ROOT}/include")
-set(CUDA_LIBRARY_DIRS "${CUDA_ROOT}/lib/x64")
+if(DEFINED ENV{OPENCL_SDK_DIR})
+  set(OPENCL_SDK_DIR $ENV{OPENCL_SDK_DIR})
+  find_path(OPENCL_INCLUDE_DIR NAMES CL/cl.h PATHS ${OPENCL_SDK_DIR}/include)
+  find_library(OPENCL_LIBRARY NAMES OpenCL PATHS ${OPENCL_SDK_DIR}/lib/x64)
+else()
+  message(FATAL_ERROR "Please set the OPENCL_SDK_DIR environment variable to the path of your OpenCL SDK.")
+endif()
 
-# Include Boost headers
+include_directories(${OPENCL_INCLUDE_DIR})
 include_directories(${BOOST_INCLUDE_DIRS})
-
 include_directories(compute/include)
-
-include_directories(${CUDA_INCLUDE_DIRS})
+include_directories(includes)
 
 link_directories(${BOOST_LIBRARY_DIRS})
 
 find_package(Boost REQUIRED)
 
-find_library(OpenCL_LIBRARIES OpenCL HINTS ${CUDA_LIBRARY_DIRS})
-
 add_executable(gpu-algorithms main.cpp)
 
 # Link Boost libraries
-target_link_libraries(gpu-algorithms ${Boost_LIBRARIES} ${OpenCL_LIBRARIES})
+target_link_libraries(gpu-algorithms ${Boost_LIBRARIES} ${OPENCL_LIBRARY})
