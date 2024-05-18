@@ -63,9 +63,16 @@ namespace linalg {
                 if (i >= threads - 1) {
                     end = a.size();
                 }
-                results[i] = dotProduct(std::vector<int>(a.begin() + start, a.begin() + end),
+                int result = 0;
+                for (int j = start; j < end; j++) {
+                    result += a[j] * b[j];
+                }
+                results[i] = result;
+                // Copies the sections to new vectors, and passes them to the dotProduct function
+                /* results[i] = dotProduct(std::vector<int>(a.begin() + start, a.begin() + end),
                                         std::vector<int>(b.begin() + start, b.begin() + end),
-                                        end - start);
+                                        end - start); */
+                                    
             }));
         }
         for (int i = 0; i < threads; i++) {
