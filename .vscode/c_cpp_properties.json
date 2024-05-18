@@ -4,8 +4,9 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/compute/include",
-                "C:/Users/svein/boost_1_85_0"
+                "${env:BOOST_ROOT_DIR}/**",
+                "${env:OPENCL_SDK_DIR}/include",
+                "${workspaceFolder}/compute/include"
             ],
             "defines": [
                 "_DEBUG",
@@ -14,7 +15,7 @@
             ],
             "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
             "cStandard": "c17",
-            "cppStandard": "gnu++17",
+            "cppStandard": "gnu++20",
             "intelliSenseMode": "windows-gcc-x64"
         }
     ],

@@ -28,11 +28,13 @@ include_directories(${BOOST_INCLUDE_DIRS})
 include_directories(compute/include)
 include_directories(includes)
 
+file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
+
 link_directories(${BOOST_LIBRARY_DIRS})
 
 find_package(Boost REQUIRED)
 
-add_executable(gpu-algorithms main.cpp)
+add_executable(gpu-algorithms main.cpp ${SOURCES})
 
 # Link Boost libraries
 target_link_libraries(gpu-algorithms ${Boost_LIBRARIES} ${OPENCL_LIBRARY})
