@@ -85,11 +85,10 @@ namespace linalg {
         return result;
     }
 
-    Matrix matrixMultiplication(Matrix a, Matrix b) {
+    void matrixMultiplication(Matrix& a, Matrix& b, Matrix& result) {
         if (a.getCols() != b.getRows()) {
             throw std::runtime_error("Matrix dimensions do not match");
         }
-        Matrix result(a.getRows(), b.getCols());
         for (size_t i = 0; i < a.getRows(); i++) {
             for (size_t j = 0; j < b.getCols(); j++) {
                 int value = 0;
@@ -99,10 +98,34 @@ namespace linalg {
                 result.set(i, j, value);
             }
         }
-        return result;
     }
 
-    Matrix threadedMatrixMultiplication(Matrix a, Matrix b, int threads) {
-        return Matrix(0, 0);
+    void threadedMatrixMultiplication(Matrix& a, Matrix& b, Matrix& result, int threads) {
+        if (a.getCols() != b.getRows()) {
+            throw std::runtime_error("Matrix dimensions do not match");
+        }
+        int chunkSize = a.getRows() / threads;
+        std::vector<std::thread> threadPool;
+        for (int i = 0; i < threads; i++) {
+            threadPool.push_back(std::thread([i, chunkSize, &a, &b, &result, threads] {
+                int start = i * chunkSize;
+                int end = (i + 1) * chunkSize;
+                if (i >= threads - 1) {
+                    end = a.getRows();
+                }
+                for (int i = start; i < end; i++) {
+                    for (int j = 0; j < b.getCols(); j++) {
+                        int value = 0;
+                        for (int k = 0; k < a.getCols(); k++) {
+                            value += a.get(i, k) * b.get(k, j);
+                        }
+                        result.set(i, j, value);
+                    }
+                }
+            }));
+        }
+        for (int i = 0; i < threads; i++) {
+            threadPool[i].join();
+        }
     }
 }

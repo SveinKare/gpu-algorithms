@@ -1,4 +1,5 @@
 #include <vector>
+#include <cstddef>
 
 #ifndef LINALG_HPP
 #define LINALG_HPP
@@ -24,8 +25,8 @@ namespace linalg {
 
     int threadedDotProduct(std::vector<int> a, std::vector<int> b, int size, int threads);
 
-    Matrix matrixMultiplication(Matrix a, Matrix b);
+    void matrixMultiplication(Matrix& a, Matrix& b, Matrix& result);
 
-    Matrix threadedMatrixMultiplication(Matrix a, Matrix b, int threads);
+    void threadedMatrixMultiplication(Matrix& a, Matrix& b, Matrix& result, int threads);
 }
 #endif
